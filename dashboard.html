@@ -1,0 +1,82 @@
+<!-- 
+    Arquivo: dashboard.html
+    Descrição: Página principal do sistema após o login
+    Esta página contém o menu lateral e o formulário de cadastro de novos usuários
+-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Configurações básicas da página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Controle - Sistema de Login</title>
+    <!-- Conexão com o arquivo de estilos CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Estrutura principal do dashboard -->
+    <div class="dashboard">
+        <!-- Menu lateral -->
+        <div class="menu-lateral">
+            <h3>Menu do Sistema</h3>
+            <!-- Links do menu -->
+            <a href="#" class="menu-item" onclick="mostrarCadastro()">Cadastrar Novo Usuário</a>
+            <a href="php/logout.php" class="menu-item">Sair do Sistema</a>
+        </div>
+
+        <!-- Área de conteúdo principal -->
+        <div class="conteudo">
+            <!-- Formulário de cadastro (inicialmente oculto) -->
+            <div id="form-cadastro" class="form-cadastro" style="display: none;">
+                <h2>Cadastro de Novo Usuário</h2>
+                <form action="php/cadastrar_usuario.php" method="POST">
+                    <!-- Campo para nome de usuário -->
+                    <div class="input-group">
+                        <label for="novo_usuario">Nome de Usuário:</label>
+                        <input type="text" name="novo_usuario" id="novo_usuario" required>
+                    </div>
+                    <!-- Campo para senha -->
+                    <div class="input-group">
+                        <label for="nova_senha">Senha:</label>
+                        <input type="password" name="nova_senha" id="nova_senha" required>
+                    </div>
+                    <!-- Campo para e-mail -->
+                    <div class="input-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <!-- Botão de cadastro -->
+                    <button type="submit">Cadastrar Usuário</button>
+                </form>
+                <!-- Área para mensagens de feedback -->
+                <div id="mensagem" class="mensagem-erro"></div>
+            </div>
+
+            <!-- Mensagem de boas-vindas -->
+            <div id="mensagem-bemvindo">
+                <h2>Bem-vindo ao Sistema</h2>
+                <p>Selecione uma opção no menu lateral para começar.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conexão com o arquivo JavaScript -->
+    <script>
+    // Função para mostrar o formulário de cadastro
+    function mostrarCadastro() {
+        document.getElementById('form-cadastro').style.display = 'block';
+        document.getElementById('mensagem-bemvindo').style.display = 'none';
+    }
+
+    // Verificar se há mensagem de sucesso na URL (após cadastro)
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const mensagem = urlParams.get('mensagem');
+        if (mensagem) {
+            document.getElementById('mensagem').style.display = 'block';
+            document.getElementById('mensagem').textContent = mensagem;
+        }
+    }
+    </script>
+</body>
+</html> 

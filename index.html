@@ -1,0 +1,48 @@
+<!-- 
+    Arquivo: index.html
+    Descrição: Página inicial do sistema de login
+    Este arquivo contém o formulário de login que será exibido para o usuário
+-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Configurações básicas da página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Login</title>
+    <!-- Conexão com o arquivo de estilos CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Container principal da página -->
+    <div class="container">
+        <!-- Caixa de login -->
+        <div class="login-box">
+            <h2>Login do Sistema</h2>
+            <!-- 
+                Formulário de login
+                action: página PHP que irá processar o login
+                method: método HTTP POST para enviar os dados com segurança
+            -->
+            <form action="php/verificar_login.php" method="POST">
+                <!-- Campo para o nome de usuário -->
+                <div class="input-group">
+                    <label for="username">Nome de Usuário:</label>
+                    <input type="text" name="username" id="username" required>
+                </div>
+                <!-- Campo para a senha -->
+                <div class="input-group">
+                    <label for="password">Senha:</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <!-- Botão para enviar o formulário -->
+                <button type="submit">Entrar no Sistema</button>
+            </form>
+            <!-- Mensagem de erro (inicialmente oculta) -->
+            <div id="mensagem-erro" class="mensagem-erro"></div>
+        </div>
+    </div>
+    <!-- Conexão com o arquivo JavaScript -->
+    <script src="js/login.js"></script>
+</body>
+</html> 
